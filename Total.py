@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-base = "dark"
 def main_page():
     st.title('데이터 분석표현')
     st.header('Hello Kt Aivle!')
@@ -406,9 +405,20 @@ def chart() :
     st.subheader('4-2. Altair Bar chart')
 
     chart = alt.Chart(df_melted,title ='일별 매출').mark_bar().encode(x='date',y='sales',color='teams')
+     
+    df_melted['height'] = 0
+    for n, i in enumerate(df_melted['teams']) :
+        if i == 'Sales1' :
+            df_melted['height'][n] = df_melted['sales'][n]/2 + df_melted['sales'][n+31] + df_melted['sales'][n+62]
+        elif i == 'Sales2' :
+            df_melted['height'][n] = df_melted['sales'][n]/2 + df_melted['sales'][n+31]
+        else :
+            df_melted['height'][n] = df_melted['sales'][n]/2
+
+     
         
 
-    text = alt.Chart(df_melted).mark_text(dx=0,dy=-5,color='black').encode(x='date',y='sales',detail='teams',text=alt.Text('sales:Q'))
+    text = alt.Chart(df_melted).mark_text(dx=0,dy=0,color='black').encode(x='date',y='height',detail='teams',text=alt.Text('sales:Q'))
         
         
     st.altair_chart(chart+text, use_container_width=True)
