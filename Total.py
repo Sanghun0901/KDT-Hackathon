@@ -70,7 +70,7 @@ def media() :
 
 
     st.header('3. Video')
-    st.video('https://youtu.be/EYiYJVKN3Tk')
+    st.video('https://youtu.be/d9Ht6yYyjRM')
 
 
 
