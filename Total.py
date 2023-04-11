@@ -66,11 +66,11 @@ def media() :
 
 
     st.header('2. Audio')
-    st.audio('MusicSample.mp3')
+    st.audio('https://youtu.be/EYiYJVKN3Tk')
 
 
     st.header('3. Video')
-    st.video('VideoSample.mp4')
+    st.video('https://youtu.be/EYiYJVKN3Tk')
 
 
 
