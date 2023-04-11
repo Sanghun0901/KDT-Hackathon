@@ -620,7 +620,7 @@ def exe() :
     # '시간' 별 인원수 집계 +.reset_index() & 확인
     df_sta_melted = df_sta_melted.groupby(['시간'])['인원수'].sum().reset_index()
     st.write(option, ' 데이터')
-    st.dataframe(df_selected_line,use_container_width=True)
+    st.dataframe(df_sta_melted ,use_container_width=True)
 
     # altair mark_bar 차트 + text 그리기- x='시간', y='인원수'
     chart = alt.Chart(df_sta_melted).mark_bar().encode(x='시간',y='인원수')
